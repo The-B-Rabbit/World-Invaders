@@ -1,0 +1,47 @@
+[gd_scene load_steps=7 format=3 uid="uid://cg2yxkg5ehec"]
+
+[ext_resource type="Script" path="res://Objects/Countries/country.gd" id="1_fqwk5"]
+[ext_resource type="Texture2D" uid="uid://bqw6bfftm0d3m" path="res://Objects/Countries/colombia_flag.png" id="2_g3icm"]
+[ext_resource type="Script" path="res://Objects/country_data.gd" id="3_6qb7m"]
+[ext_resource type="Texture2D" uid="uid://dkrb2u42dotci" path="res://southamerica.png" id="4_0411w"]
+
+[sub_resource type="Resource" id="Resource_tfhfu"]
+script = ExtResource("3_6qb7m")
+name = "Colombia"
+initial_power = 500
+flag_texture = ExtResource("2_g3icm")
+conquered_color = Color(0.635294, 0.627451, 0.227451, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_dnkyh"]
+outline_size = 6
+outline_color = Color(0, 0, 0, 1)
+
+[node name="Colombia" type="Area2D"]
+script = ExtResource("1_fqwk5")
+country_data = SubResource("Resource_tfhfu")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(113, 211)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("4_0411w")
+
+[node name="Border" type="Polygon2D" parent="."]
+position = Vector2(-569, -399)
+color = Color(0.611765, 0.47451, 0.717647, 1)
+polygon = PackedVector2Array(593, 467, 597, 456, 597, 448, 598, 443, 593, 434, 592, 430, 596, 427, 599, 427, 600, 424, 596, 421, 595, 416, 602, 415, 606, 415, 608, 412, 612, 415, 615, 413, 623, 422, 624, 418, 616, 407, 618, 400, 614, 388, 618, 377, 604, 379, 589, 372, 577, 372, 572, 364, 572, 357, 568, 352, 564, 352, 567, 347, 567, 339, 576, 332, 583, 329, 585, 326, 579, 325, 563, 334, 558, 335, 557, 338, 552, 336, 544, 341, 544, 349, 540, 351, 539, 353, 535, 356, 535, 363, 529, 356, 528, 364, 522, 371, 527, 375, 528, 383, 526, 385, 528, 390, 527, 397, 529, 401, 525, 406, 524, 410, 520, 409, 516, 413, 518, 417, 513, 418, 516, 423, 525, 427, 538, 430, 549, 432, 559, 442, 563, 443, 563, 447, 568, 451, 580, 451, 583, 452, 586, 451, 591, 457, 587, 462)
+
+[node name="BorderCollision" type="CollisionPolygon2D" parent="."]
+position = Vector2(-569, -399)
+
+[node name="Power" type="Label" parent="."]
+offset_left = -40.0
+offset_top = -10.0
+offset_right = 40.0
+offset_bottom = 16.0
+text = "999"
+label_settings = SubResource("LabelSettings_dnkyh")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]

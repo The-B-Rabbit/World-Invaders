@@ -1,0 +1,114 @@
+[gd_scene load_steps=2 format=3 uid="uid://bi04rl4n8c6cg"]
+
+[sub_resource type="GDScript" id="GDScript_wuan4"]
+resource_name = "country_info"
+script/source = "extends Control
+
+signal pick_country(data)
+
+var country_data : CountryData
+
+func _ready():
+	pick_country.connect(GameManager.on_pick_country)
+	GameManager.update_game_state.connect(on_new_game_state)
+	GameManager.country_conquered.connect(on_country_conquered)
+	pass
+
+func set_data(data : CountryData):
+	country_data = data
+	$Panel/Name.text = country_data.name
+	$Panel/Power.text = \"POWER:\" + str(country_data.power)
+	$Panel/Flag.texture = country_data.flag_texture
+	pass
+
+func _on_pick_button_down():
+	pick_country.emit(country_data)
+	pass # Replace with function body.
+
+func _update_data():
+	if country_data:
+		set_data(country_data)
+	pass
+
+func on_new_game_state(state : GameManager.GameState):
+	if state == GameManager.GameState.REGULAR:
+		$Panel/Pick.hide()
+	pass
+
+func on_country_conquered(attacker : CountryData, defender : CountryData):
+	set_data(attacker)
+	pass
+"
+
+[node name="CountryInfo" type="Control"]
+z_index = 2
+layout_mode = 3
+anchors_preset = 0
+offset_right = 320.0
+offset_bottom = 648.0
+script = SubResource("GDScript_wuan4")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Name" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 312.0
+offset_bottom = 34.0
+text = "PLACEHOLDER"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Power" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -144.0
+offset_top = -472.0
+offset_right = 144.0
+offset_bottom = -446.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "POWER:
+"
+vertical_alignment = 1
+
+[node name="Flag" type="TextureRect" parent="Panel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -104.0
+offset_top = 48.0
+offset_right = 104.0
+offset_bottom = 160.0
+grow_horizontal = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Pick" type="Button" parent="Panel"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -48.0
+offset_top = -56.0
+offset_right = 56.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "PICK"
+
+[connection signal="button_down" from="Panel/Pick" to="." method="_on_pick_button_down"]

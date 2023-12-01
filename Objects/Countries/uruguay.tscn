@@ -1,0 +1,47 @@
+[gd_scene load_steps=7 format=3 uid="uid://d0gd2d7kq7bxy"]
+
+[ext_resource type="Script" path="res://Objects/Countries/country.gd" id="1_mrot3"]
+[ext_resource type="Texture2D" uid="uid://dkrb2u42dotci" path="res://southamerica.png" id="2_8avhu"]
+[ext_resource type="Texture2D" uid="uid://b12whwh5iipp8" path="res://Objects/Countries/uruguay_flag.png" id="2_ke21p"]
+[ext_resource type="Script" path="res://Objects/country_data.gd" id="3_wc6or"]
+
+[sub_resource type="Resource" id="Resource_68tje"]
+script = ExtResource("3_wc6or")
+name = "Uruguay"
+initial_power = 300
+flag_texture = ExtResource("2_ke21p")
+conquered_color = Color(0.705882, 0.576471, 0.607843, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_dnkyh"]
+outline_size = 6
+outline_color = Color(0, 0, 0, 1)
+
+[node name="Ecuador" type="Area2D"]
+script = ExtResource("1_mrot3")
+country_data = SubResource("Resource_68tje")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-19, -113)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("2_8avhu")
+
+[node name="Border" type="Polygon2D" parent="."]
+position = Vector2(-569, -399)
+color = Color(0.698039, 0.901961, 1, 1)
+polygon = PackedVector2Array(549, 407, 555, 393, 555, 384, 560, 376, 570, 385, 574, 386, 581, 394, 589, 402, 586, 407, 586, 413, 578, 418, 572, 420, 564, 420, 555, 413)
+
+[node name="BorderCollision" type="CollisionPolygon2D" parent="."]
+position = Vector2(-569, -399)
+
+[node name="Power" type="Label" parent="."]
+offset_left = -40.0
+offset_top = -10.0
+offset_right = 40.0
+offset_bottom = 16.0
+text = "999"
+label_settings = SubResource("LabelSettings_dnkyh")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]

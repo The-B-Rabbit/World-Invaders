@@ -1,0 +1,47 @@
+[gd_scene load_steps=7 format=3 uid="uid://ccssyr5xqa87u"]
+
+[ext_resource type="Script" path="res://Objects/Countries/country.gd" id="1_pw2qd"]
+[ext_resource type="Texture2D" uid="uid://bfds67w3q574l" path="res://Objects/Countries/chile_flag.png" id="2_2t0j2"]
+[ext_resource type="Script" path="res://Objects/country_data.gd" id="3_rkd3y"]
+[ext_resource type="Texture2D" uid="uid://dkrb2u42dotci" path="res://southamerica.png" id="4_8cv7f"]
+
+[sub_resource type="Resource" id="Resource_tso8d"]
+script = ExtResource("3_rkd3y")
+name = "Chile"
+initial_power = 300
+flag_texture = ExtResource("2_2t0j2")
+conquered_color = Color(0.482353, 0.643137, 0.576471, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_dnkyh"]
+outline_size = 6
+outline_color = Color(0, 0, 0, 1)
+
+[node name="Chile" type="Area2D"]
+script = ExtResource("1_pw2qd")
+country_data = SubResource("Resource_tso8d")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(94, -107)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("4_8cv7f")
+
+[node name="Border" type="Polygon2D" parent="."]
+position = Vector2(-569, -399)
+color = Color(0.501961, 0.556863, 0.827451, 1)
+polygon = PackedVector2Array(569, 273, 579, 265, 582, 272, 586, 283, 586, 293, 590, 305, 593, 312, 599, 314, 599, 322, 590, 328, 588, 338, 589, 346, 590, 351, 584, 355, 578, 370, 578, 378, 573, 388, 579, 401, 578, 412, 574, 421, 574, 430, 569, 440, 572, 452, 567, 463, 566, 486, 569, 501, 569, 510, 569, 522, 565, 535, 559, 548, 562, 556, 566, 556, 572, 567, 586, 569, 587, 572, 588, 588, 575, 592, 574, 585, 581, 583, 579, 578, 574, 582, 570, 581, 572, 574, 560, 577, 561, 567, 557, 565, 554, 550, 552, 538, 557, 538, 556, 533, 551, 534, 552, 526, 544, 527, 545, 520, 551, 516, 558, 509, 558, 503, 557, 494, 561, 485, 559, 474, 555, 481, 552, 479, 551, 471, 553, 459, 550, 443, 553, 435, 559, 423, 563, 412, 565, 402, 565, 392, 562, 381, 565, 371, 565, 361, 568, 352, 569, 340, 570, 327, 570, 318, 573, 300, 571, 283)
+
+[node name="BorderCollision" type="CollisionPolygon2D" parent="."]
+position = Vector2(-569, -399)
+
+[node name="Power" type="Label" parent="."]
+offset_left = -40.0
+offset_top = -10.0
+offset_right = 40.0
+offset_bottom = 16.0
+text = "999"
+label_settings = SubResource("LabelSettings_dnkyh")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="input_event" from="." to="." method="_on_input_event" flags=18]

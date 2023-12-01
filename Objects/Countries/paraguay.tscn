@@ -1,0 +1,47 @@
+[gd_scene load_steps=7 format=3 uid="uid://cmeupf057uav4"]
+
+[ext_resource type="Script" path="res://Objects/Countries/country.gd" id="1_ulr7n"]
+[ext_resource type="Texture2D" uid="uid://bghsn3skg0mgh" path="res://Objects/Countries/paraguay_flag.png" id="2_fsudu"]
+[ext_resource type="Script" path="res://Objects/country_data.gd" id="3_i2ao7"]
+[ext_resource type="Texture2D" uid="uid://dkrb2u42dotci" path="res://southamerica.png" id="4_6sq0p"]
+
+[sub_resource type="Resource" id="Resource_cnm2l"]
+script = ExtResource("3_i2ao7")
+name = "Paraguay"
+initial_power = 30
+flag_texture = ExtResource("2_fsudu")
+conquered_color = Color(0.101961, 0.223529, 0.282353, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_dnkyh"]
+outline_size = 6
+outline_color = Color(0, 0, 0, 1)
+
+[node name="Paraguay" type="Area2D"]
+script = ExtResource("1_ulr7n")
+country_data = SubResource("Resource_cnm2l")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-9, -28)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("4_6sq0p")
+
+[node name="Border" type="Polygon2D" parent="."]
+position = Vector2(-569, -399)
+color = Color(0.941176, 0.831373, 0.647059, 1)
+polygon = PackedVector2Array(572, 389, 587, 393, 589, 405, 591, 408, 598, 409, 600, 413, 598, 423, 595, 432, 591, 432, 590, 435, 588, 435, 586, 438, 581, 438, 576, 439, 565, 437, 561, 435, 562, 432, 565, 431, 565, 423, 567, 424, 569, 422, 567, 418, 570, 416, 558, 409, 549, 409, 541, 403, 540, 399, 536, 396, 533, 390, 534, 386, 533, 380, 537, 373, 540, 367, 551, 367, 557, 365, 562, 368, 567, 372, 571, 375, 571, 381)
+
+[node name="BorderCollision" type="CollisionPolygon2D" parent="."]
+position = Vector2(-569, -399)
+
+[node name="Power" type="Label" parent="."]
+offset_left = -40.0
+offset_top = -10.0
+offset_right = 40.0
+offset_bottom = 16.0
+text = "999"
+label_settings = SubResource("LabelSettings_dnkyh")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="input_event" from="." to="." method="_on_input_event" flags=18]

@@ -1,0 +1,34 @@
+[gd_scene load_steps=3 format=3 uid="uid://b7u1ri2dhbu4i"]
+
+[ext_resource type="Script" path="res://Victoria.gd" id="1_e6cfa"]
+[ext_resource type="Texture2D" uid="uid://cm174lckdfmud" path="res://Victory.png" id="2_d5ggx"]
+
+[node name="Victoria" type="Node2D"]
+script = ExtResource("1_e6cfa")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(575.5, 324.5)
+scale = Vector2(1.83866, 1.37076)
+texture = ExtResource("2_d5ggx")
+
+[node name="Label" type="Label" parent="Sprite2D"]
+offset_left = -22.0269
+offset_top = -173.261
+offset_right = 309.973
+offset_bottom = -49.2612
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+theme_override_font_sizes/font_size = 90
+text = "Victoria"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Menu" type="Button" parent="."]
+offset_left = 911.0
+offset_top = 246.0
+offset_right = 1093.0
+offset_bottom = 341.0
+theme_override_font_sizes/font_size = 63
+text = "Menu"
+icon_alignment = 1
+
+[connection signal="pressed" from="Menu" to="." method="_on_menu_pressed"]

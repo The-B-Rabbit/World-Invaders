@@ -1,0 +1,47 @@
+[gd_scene load_steps=7 format=3 uid="uid://lrq0lth8ak8i"]
+
+[ext_resource type="Script" path="res://Objects/Countries/country.gd" id="1_cd6vg"]
+[ext_resource type="Texture2D" uid="uid://bpq06wgwjvq5y" path="res://Objects/Countries/peru_flag.png" id="2_fwn3m"]
+[ext_resource type="Script" path="res://Objects/country_data.gd" id="3_qb2aq"]
+[ext_resource type="Texture2D" uid="uid://dkrb2u42dotci" path="res://southamerica.png" id="4_mqkk5"]
+
+[sub_resource type="Resource" id="Resource_okwsf"]
+script = ExtResource("3_qb2aq")
+name = "Peru"
+initial_power = 170
+flag_texture = ExtResource("2_fwn3m")
+conquered_color = Color(0.827451, 0.12549, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_dnkyh"]
+outline_size = 6
+outline_color = Color(0, 0, 0, 1)
+
+[node name="Peru" type="Area2D"]
+script = ExtResource("1_cd6vg")
+country_data = SubResource("Resource_okwsf")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(136, 96)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("4_mqkk5")
+
+[node name="Border" type="Polygon2D" parent="."]
+position = Vector2(-569, -399)
+color = Color(0.945098, 0, 0.890196, 1)
+polygon = PackedVector2Array(561, 442, 560, 429, 551, 420, 542, 399, 529, 378, 520, 372, 517, 359, 526, 348, 525, 357, 536, 361, 545, 351, 550, 343, 560, 337, 568, 329, 566, 315, 578, 322, 588, 333, 605, 335, 613, 343, 611, 348, 616, 354, 602, 358, 586, 368, 582, 387, 594, 404, 607, 401, 612, 397, 611, 414, 622, 416, 627, 425, 626, 442, 622, 454, 623, 465, 612, 480, 594, 465, 568, 450, 566, 444)
+
+[node name="BorderCollision" type="CollisionPolygon2D" parent="."]
+position = Vector2(-569, -399)
+
+[node name="Power" type="Label" parent="."]
+offset_left = -40.0
+offset_top = -10.0
+offset_right = 40.0
+offset_bottom = 16.0
+text = "999"
+label_settings = SubResource("LabelSettings_dnkyh")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="input_event" from="." to="." method="_on_input_event" flags=18]

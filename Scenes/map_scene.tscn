@@ -1,0 +1,91 @@
+[gd_scene load_steps=16 format=3 uid="uid://d3wn4aj8iucy6"]
+
+[ext_resource type="Script" path="res://Scenes/map_scene.gd" id="1_juqdo"]
+[ext_resource type="Texture2D" uid="uid://dkrb2u42dotci" path="res://southamerica.png" id="1_nfh14"]
+[ext_resource type="Texture2D" uid="uid://do87jkrmyog8m" path="res://fondo.png" id="3_48xck"]
+[ext_resource type="PackedScene" uid="uid://bq2nkq70shbb2" path="res://Objects/Countries/argentina.tscn" id="4_551nj"]
+[ext_resource type="PackedScene" uid="uid://d0gd2d7kq7bxy" path="res://Objects/Countries/uruguay.tscn" id="4_qlihg"]
+[ext_resource type="PackedScene" uid="uid://doqclcqqtxyk6" path="res://Objects/Countries/brasil.tscn" id="5_fftxw"]
+[ext_resource type="PackedScene" uid="uid://lrq0lth8ak8i" path="res://Objects/Countries/peru.tscn" id="6_axeg0"]
+[ext_resource type="PackedScene" uid="uid://bi04rl4n8c6cg" path="res://UI/country_info.tscn" id="6_brmph"]
+[ext_resource type="Script" path="res://Scenes/UI.gd" id="6_i20od"]
+[ext_resource type="PackedScene" uid="uid://ccssyr5xqa87u" path="res://Objects/Countries/chile.tscn" id="7_l2dp1"]
+[ext_resource type="PackedScene" uid="uid://cji78ew5hmkjo" path="res://Objects/Countries/bolivia.tscn" id="8_qtyh5"]
+[ext_resource type="PackedScene" uid="uid://cmeupf057uav4" path="res://Objects/Countries/paraguay.tscn" id="9_xmgy3"]
+[ext_resource type="PackedScene" uid="uid://jxiwd6kinnhy" path="res://Objects/Countries/venezuela.tscn" id="10_strq3"]
+[ext_resource type="PackedScene" uid="uid://cg2yxkg5ehec" path="res://Objects/Countries/colombia.tscn" id="11_1oxss"]
+[ext_resource type="PackedScene" uid="uid://u2uxk37w5kga" path="res://Objects/Countries/ecuador.tscn" id="12_o00nh"]
+
+[node name="MapScene" type="Node2D"]
+script = ExtResource("1_juqdo")
+
+[node name="Southamerica" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(406.8, 320)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("1_nfh14")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(575.5, 324)
+scale = Vector2(0.608995, 0.457304)
+texture = ExtResource("3_48xck")
+
+[node name="Continent" type="Node2D" parent="."]
+
+[node name="Argentina" parent="Continent" instance=ExtResource("4_551nj")]
+position = Vector2(352.8, 451)
+
+[node name="Uruguay" parent="Continent" instance=ExtResource("4_qlihg")]
+position = Vector2(425.8, 432)
+
+[node name="Brasil" parent="Continent" instance=ExtResource("5_fftxw")]
+position = Vector2(466.8, 261)
+
+[node name="Peru" parent="Continent" instance=ExtResource("6_axeg0")]
+position = Vector2(272, 224)
+
+[node name="Chile" parent="Continent" instance=ExtResource("7_l2dp1")]
+position = Vector2(312, 429)
+
+[node name="Bolivia" parent="Continent" instance=ExtResource("8_qtyh5")]
+position = Vector2(363, 289)
+
+[node name="Paraguay" parent="Continent" instance=ExtResource("9_xmgy3")]
+position = Vector2(416, 347)
+
+[node name="Venezuela" parent="Continent" instance=ExtResource("10_strq3")]
+position = Vector2(369, 76)
+
+[node name="Colombia" parent="Continent" instance=ExtResource("11_1oxss")]
+position = Vector2(292, 107)
+
+[node name="Ecuador" parent="Continent" instance=ExtResource("12_o00nh")]
+position = Vector2(246, 150)
+
+[node name="UI" type="CanvasLayer" parent="."]
+script = ExtResource("6_i20od")
+
+[node name="Main" type="Control" parent="UI"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="CountryInfo" parent="UI/Main" instance=ExtResource("6_brmph")]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -351.0
+offset_top = -324.0
+offset_right = 0.0
+offset_bottom = 324.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[connection signal="country_clicked" from="." to="UI" method="_on_map_scene_country_clicked"]

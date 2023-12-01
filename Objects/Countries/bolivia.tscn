@@ -1,0 +1,47 @@
+[gd_scene load_steps=7 format=3 uid="uid://cji78ew5hmkjo"]
+
+[ext_resource type="Script" path="res://Objects/Countries/country.gd" id="1_v2s1p"]
+[ext_resource type="Texture2D" uid="uid://blm4xepuebsc2" path="res://Objects/Countries/bolivia_flag.png" id="2_r037d"]
+[ext_resource type="Script" path="res://Objects/country_data.gd" id="3_u1p3y"]
+[ext_resource type="Texture2D" uid="uid://dkrb2u42dotci" path="res://southamerica.png" id="4_l6sxs"]
+
+[sub_resource type="Resource" id="Resource_ucv4u"]
+script = ExtResource("3_u1p3y")
+name = "Bolivia"
+initial_power = 500
+flag_texture = ExtResource("2_r037d")
+conquered_color = Color(0.494118, 0.403922, 0.603922, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_dnkyh"]
+outline_size = 6
+outline_color = Color(0, 0, 0, 1)
+
+[node name="Bolivia" type="Area2D"]
+script = ExtResource("1_v2s1p")
+country_data = SubResource("Resource_ucv4u")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(44, 30)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("4_l6sxs")
+
+[node name="Border" type="Polygon2D" parent="."]
+position = Vector2(-569, -399)
+color = Color(0.909804, 0.827451, 0.980392, 1)
+polygon = PackedVector2Array(624, 395, 621, 402, 625, 406, 626, 411, 629, 413, 624, 425, 625, 433, 617, 427, 610, 424, 593, 425, 587, 435, 586, 443, 586, 448, 582, 447, 575, 447, 570, 454, 567, 450, 563, 447, 558, 445, 554, 448, 549, 453, 544, 453, 540, 442, 536, 432, 536, 422, 533, 417, 528, 404, 532, 396, 528, 387, 535, 375, 533, 369, 535, 364, 534, 358, 528, 348, 537, 350, 545, 345, 550, 343, 557, 339, 562, 338, 566, 355, 571, 360, 575, 360, 578, 363, 584, 364, 590, 368, 605, 374, 608, 385, 604, 386, 606, 392, 610, 397, 615, 398)
+
+[node name="BorderCollision" type="CollisionPolygon2D" parent="."]
+position = Vector2(-569, -399)
+
+[node name="Power" type="Label" parent="."]
+offset_left = -40.0
+offset_top = -10.0
+offset_right = 40.0
+offset_bottom = 16.0
+text = "999"
+label_settings = SubResource("LabelSettings_dnkyh")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="input_event" from="." to="." method="_on_input_event" flags=18]

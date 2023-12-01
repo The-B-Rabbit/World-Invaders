@@ -1,0 +1,48 @@
+[gd_scene load_steps=7 format=3 uid="uid://bq2nkq70shbb2"]
+
+[ext_resource type="Script" path="res://Objects/Countries/country.gd" id="1_yulrx"]
+[ext_resource type="Texture2D" uid="uid://dkrb2u42dotci" path="res://southamerica.png" id="2_28mwf"]
+[ext_resource type="Texture2D" uid="uid://flg67etfseb4" path="res://Objects/Countries/argentina_flag.png" id="2_tteii"]
+[ext_resource type="Script" path="res://Objects/country_data.gd" id="3_f12nc"]
+
+[sub_resource type="Resource" id="Resource_jjamh"]
+script = ExtResource("3_f12nc")
+name = "Argentina"
+initial_power = 600
+flag_texture = ExtResource("2_tteii")
+conquered_color = Color(0, 0.858824, 0.917647, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_yquh5"]
+outline_size = 6
+outline_color = Color(0, 0, 0, 1)
+
+[node name="Argentina" type="Area2D"]
+script = ExtResource("1_yulrx")
+country_data = SubResource("Resource_jjamh")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(55, -132)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("2_28mwf")
+
+[node name="Border" type="Polygon2D" parent="."]
+position = Vector2(-569, -399)
+color = Color(0.380392, 0.870588, 0.952941, 1)
+texture_rotation = -0.523599
+polygon = PackedVector2Array(569, 567, 550, 566, 547, 544, 529, 544, 525, 531, 521, 534, 519, 525, 527, 507, 528, 484, 529, 475, 526, 457, 532, 429, 530, 413, 536, 403, 532, 397, 539, 386, 531, 363, 539, 352, 538, 347, 545, 330, 551, 327, 548, 313, 549, 304, 559, 299, 563, 286, 572, 282, 581, 290, 592, 284, 603, 294, 606, 301, 614, 304, 627, 307, 635, 312, 632, 318, 628, 323, 625, 329, 632, 335, 648, 334, 658, 328, 664, 317, 667, 326, 663, 333, 652, 342, 639, 352, 631, 361, 628, 371, 627, 376, 622, 388, 625, 398, 631, 404, 631, 411, 633, 414, 628, 424, 612, 432, 599, 433, 594, 430, 591, 434, 592, 438, 591, 448, 580, 451, 572, 448, 570, 455, 575, 463, 572, 465, 575, 467, 571, 471, 568, 481, 556, 488, 554, 497, 561, 501, 566, 504, 563, 513, 553, 525, 545, 533, 550, 547, 559, 561)
+
+[node name="BorderCollision" type="CollisionPolygon2D" parent="."]
+position = Vector2(-569, -399)
+
+[node name="Power" type="Label" parent="."]
+offset_left = -30.0
+offset_top = -17.0
+offset_right = 50.0
+offset_bottom = 6.0
+text = "999"
+label_settings = SubResource("LabelSettings_yquh5")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]

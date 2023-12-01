@@ -1,0 +1,47 @@
+[gd_scene load_steps=7 format=3 uid="uid://doqclcqqtxyk6"]
+
+[ext_resource type="Script" path="res://Objects/Countries/country.gd" id="1_gmnwi"]
+[ext_resource type="Texture2D" uid="uid://ciw145r212ilt" path="res://Objects/Countries/brazil_flag.png" id="2_vhuhi"]
+[ext_resource type="Script" path="res://Objects/country_data.gd" id="3_xqpjt"]
+[ext_resource type="Texture2D" uid="uid://dkrb2u42dotci" path="res://southamerica.png" id="4_2vgpg"]
+
+[sub_resource type="Resource" id="Resource_uhq2k"]
+script = ExtResource("3_xqpjt")
+name = "Brasil"
+initial_power = 400
+flag_texture = ExtResource("2_vhuhi")
+conquered_color = Color(0, 0.917647, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_fssbs"]
+outline_size = 6
+outline_color = Color(0, 0, 0, 1)
+
+[node name="Brasil" type="Area2D"]
+script = ExtResource("1_gmnwi")
+country_data = SubResource("Resource_uhq2k")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-60, 59)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("4_2vgpg")
+
+[node name="Border" type="Polygon2D" parent="."]
+position = Vector2(-569, -399)
+color = Color(0.0941176, 0.952941, 0.180392, 1)
+polygon = PackedVector2Array(518, 548, 529, 557, 533, 556, 538, 563, 545, 568, 548, 574, 544, 584, 552, 579, 556, 570, 561, 558, 567, 553, 570, 554, 562, 568, 585, 545, 594, 522, 594, 513, 617, 501, 624, 504, 631, 495, 648, 496, 658, 491, 677, 466, 686, 420, 692, 407, 727, 374, 725, 346, 712, 344, 692, 325, 683, 321, 666, 319, 654, 313, 646, 319, 644, 314, 649, 307, 633, 298, 617, 295, 603, 309, 594, 302, 610, 295, 608, 288, 581, 300, 597, 275, 586, 249, 579, 254, 578, 261, 569, 269, 548, 259, 547, 265, 518, 270, 510, 262, 511, 245, 508, 236, 494, 244, 466, 245, 475, 264, 458, 272, 441, 261, 421, 264, 425, 272, 421, 277, 424, 293, 421, 314, 398, 324, 384, 344, 395, 364, 406, 368, 415, 362, 415, 376, 434, 380, 456, 366, 464, 388, 488, 398, 502, 404, 504, 412, 500, 416, 506, 426, 520, 424, 518, 432, 521, 437, 523, 444, 520, 454, 521, 473, 537, 482, 538, 494, 549, 499, 546, 510, 552, 516, 548, 526)
+
+[node name="BorderCollision" type="CollisionPolygon2D" parent="."]
+position = Vector2(-569, -399)
+
+[node name="Power" type="Label" parent="."]
+offset_left = -39.0
+offset_top = -23.0
+offset_right = 41.0
+offset_bottom = 3.0
+text = "999"
+label_settings = SubResource("LabelSettings_fssbs")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="input_event" from="." to="." method="_on_input_event" flags=18]

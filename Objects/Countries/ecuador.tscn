@@ -1,0 +1,47 @@
+[gd_scene load_steps=7 format=3 uid="uid://u2uxk37w5kga"]
+
+[ext_resource type="Script" path="res://Objects/Countries/country.gd" id="1_j5hj3"]
+[ext_resource type="Texture2D" uid="uid://kocfcxu1evlr" path="res://Objects/Countries/ecuador_flag.png" id="2_cmmda"]
+[ext_resource type="Script" path="res://Objects/country_data.gd" id="3_m7ss3"]
+[ext_resource type="Texture2D" uid="uid://dkrb2u42dotci" path="res://southamerica.png" id="4_3kaq1"]
+
+[sub_resource type="Resource" id="Resource_nnu70"]
+script = ExtResource("3_m7ss3")
+name = "Ecuador"
+initial_power = 150
+flag_texture = ExtResource("2_cmmda")
+conquered_color = Color(0.627451, 0.231373, 0.415686, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_dnkyh"]
+outline_size = 6
+outline_color = Color(0, 0, 0, 1)
+
+[node name="Ecuador" type="Area2D"]
+script = ExtResource("1_j5hj3")
+country_data = SubResource("Resource_nnu70")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(161, 169)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("4_3kaq1")
+
+[node name="Border" type="Polygon2D" parent="."]
+position = Vector2(-569, -399)
+color = Color(0.847059, 0.839216, 0.368627, 1)
+polygon = PackedVector2Array(563, 379, 550, 384, 550, 386, 552, 389, 548, 395, 550, 399, 547, 400, 546, 404, 547, 408, 546, 411, 550, 415, 550, 412, 555, 412, 555, 416, 552, 422, 553, 425, 549, 431, 556, 432, 559, 435, 564, 434, 566, 427, 569, 423, 571, 418, 580, 415, 591, 405, 593, 399, 591, 389, 583, 387, 574, 387, 570, 384)
+
+[node name="BorderCollision" type="CollisionPolygon2D" parent="."]
+position = Vector2(-569, -399)
+
+[node name="Power" type="Label" parent="."]
+offset_left = -40.0
+offset_top = -10.0
+offset_right = 40.0
+offset_bottom = 16.0
+text = "999"
+label_settings = SubResource("LabelSettings_dnkyh")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]

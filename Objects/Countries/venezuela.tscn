@@ -1,0 +1,47 @@
+[gd_scene load_steps=7 format=3 uid="uid://jxiwd6kinnhy"]
+
+[ext_resource type="Script" path="res://Objects/Countries/country.gd" id="1_580q3"]
+[ext_resource type="Texture2D" uid="uid://bbjo801v7br4v" path="res://Objects/Countries/venezuela_flag.png" id="2_egtit"]
+[ext_resource type="Script" path="res://Objects/country_data.gd" id="3_yqxdr"]
+[ext_resource type="Texture2D" uid="uid://dkrb2u42dotci" path="res://southamerica.png" id="4_no3c3"]
+
+[sub_resource type="Resource" id="Resource_a1ltc"]
+script = ExtResource("3_yqxdr")
+name = "Venezuela"
+initial_power = 700
+flag_texture = ExtResource("2_egtit")
+conquered_color = Color(0.72549, 0.509804, 0.462745, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_dnkyh"]
+outline_size = 6
+outline_color = Color(0, 0, 0, 1)
+
+[node name="Venezuela" type="Area2D"]
+script = ExtResource("1_580q3")
+country_data = SubResource("Resource_a1ltc")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(36, 241)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("4_no3c3")
+
+[node name="Border" type="Polygon2D" parent="."]
+position = Vector2(-569, -399)
+color = Color(0.717647, 0.917647, 0.839216, 1)
+polygon = PackedVector2Array(572, 446, 568, 440, 569, 438, 568, 432, 565, 428, 570, 429, 581, 429, 587, 428, 592, 427, 598, 424, 602, 420, 597, 414, 598, 408, 602, 404, 603, 396, 611, 393, 601, 388, 600, 382, 593, 378, 587, 378, 584, 374, 586, 371, 590, 371, 590, 368, 572, 370, 572, 372, 561, 375, 553, 370, 544, 371, 536, 369, 530, 363, 525, 362, 524, 359, 522, 360, 519, 356, 516, 357, 517, 360, 517, 363, 508, 367, 508, 373, 509, 380, 505, 385, 500, 379, 499, 374, 503, 369, 503, 361, 499, 362, 491, 369, 489, 376, 489, 379, 487, 381, 490, 383, 495, 387, 495, 396, 499, 401, 504, 403, 513, 402, 520, 407, 529, 410, 540, 408, 538, 419, 539, 428, 541, 434, 539, 438, 544, 443, 547, 452, 554, 454, 561, 453, 566, 450)
+
+[node name="BorderCollision" type="CollisionPolygon2D" parent="."]
+position = Vector2(-569, -399)
+
+[node name="Power" type="Label" parent="."]
+offset_left = -40.0
+offset_top = -10.0
+offset_right = 40.0
+offset_bottom = 16.0
+text = "999"
+label_settings = SubResource("LabelSettings_dnkyh")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]
